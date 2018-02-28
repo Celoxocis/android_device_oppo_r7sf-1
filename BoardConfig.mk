@@ -27,6 +27,9 @@ TARGET_BOARD_INFO_FILE ?= $(DEVICE_PATH)/board-info.txt
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 
+# Extended Filesystem Support
+TARGET_EXFAT_DRIVER := sdfat
+
 # Include path
 TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
 
