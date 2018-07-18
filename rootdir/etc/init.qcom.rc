@@ -36,8 +36,16 @@ on fs
 
 on boot
     # Adaptive LMK
+    write /sys/module/lowmemorykiller/parameters/adj_max_shift 606
+    write /sys/module/process_reclaim/parameters/min_score_adj 606
+    write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
+    write /sys/module/process_reclaim/parameters/pressure_max 70
+    write /sys/module/process_reclaim/parameters/swap_opt_eff 30
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+    write /sys/module/process_reclaim/parameters/pressure_min 10
+    write /sys/module/process_reclaim/parameters/per_swap_size 1024
+    write /sys/module/lowmemorykiller/parameters/minfree "18432,23040,27648,32256,55296,80640"
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 80640
 
 service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
